@@ -1,50 +1,93 @@
 # ResumeMatch
 
-Semantic resume-to-job matching with evidence-backed skill gap analysis.
+**Semantic resume-to-job matching with evidence-backed skill gap analysis.**
 
-ResumeMatch evaluates how well a resume aligns with a specific job description by identifying the best supporting evidence in the resume for each requirement, rather than relying on simple keyword matching. It provides a detailed, evidence-backed breakdown of strengths and gaps, categorized by skill clusters.
+ResumeMatch evaluates how well a resume aligns with a specific job description by identifying the best supporting evidence in the resume for each requirement, rather than relying on simple keyword matching. It produces requirement-level classifications, evidence-backed explanations, and actionable skill-cluster insights.
+
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-Framework-green)
+![Next.js](https://img.shields.io/badge/Next.js-Dashboard-black)
+![Tests](https://img.shields.io/badge/Tests-42_passed-success)
+
+## V1 Results (Benchmark v1.0.0)
+
+| Metric | Result |
+|---|---:|
+| Benchmark Accuracy | **82.86%** |
+| Macro F1 | **0.777** |
+| Benchmark Cases | 35 |
+| Tests Passing | **42/42** |
+
+*Calibration improved benchmark accuracy from 71.43% to 82.86%.*
 
 ## Why ResumeMatch?
 
-Standard keyword matching often fails to identify semantic equivalents or correctly attribute resume experience to specific job requirements. ResumeMatch addresses this by using semantic embeddings to:
-- Tie resume evidence directly back to individual job requirements.
-- Filter out unrelated resume text as evidence.
-- Aggregate gaps into actionable skill clusters.
+Standard keyword matching often fails to identify semantic equivalents or correctly attribute resume experience to specific job requirements. ResumeMatch addresses this by using semantic embeddings to ensure that experience is not just detected, but correctly tied to individual job requirements.
 
 ## Features
 
-- **Requirement-to-Evidence Matching**: Uses semantic similarity to pair job requirements with the most relevant resume segments.
-- **Evidence Sufficiency Gating**: Prevents weak semantic matches from being treated as meaningful evidence.
-- **Skill-Cluster Aggregation**: Groups findings into relevant professional domains (e.g., Backend, Frontend, Databases).
-- **Evidence-Backed Explanations**: Provides granular, deterministic feedback for each matched requirement.
-- **Calibrated Scoring**: Uses tuned thresholds to classify requirements as Strong, Partial, or Weak.
-- **Benchmark Evaluation**: Validated against a 35-case labeled dataset for high matching accuracy.
+- **Semantic Matching**: Pairs job requirements with the most relevant resume segments.
+- **Evidence Gating**: Filters out weak semantic matches.
+- **Skill-Cluster Aggregation**: Groups results by professional domain.
+- **Evidence-Backed Explanations**: Provides granular, deterministic feedback.
+- **Calibrated Scoring**: Classifies requirements as Strong, Partial, or Weak.
+- **Benchmark Evaluation**: Validated against 35 labeled cases.
+- **API-Driven**: FastAPI backend with a Next.js dashboard.
+
+## Pipeline Architecture
+
+```text
+Job Description ? Requirement Extraction
+        ?
+Semantic Embedding (all-MiniLM-L6-v2)
+        ?
+Resume Evidence Matching
+        ?
+Evidence Sufficiency Gate
+        ?
+Strong / Partial / Weak Classification
+        ?
+Importance-Aware Scoring
+        ?
+Skill Cluster Aggregation
+        ?
+Analysis Dashboard
+```
 
 ## Architecture
 
-### Backend
-- **Framework**: FastAPI
-- **Engine**: Framework-agnostic analysis engine using `sentence-transformers/all-MiniLM-L6-v2`.
-- **Logic**: Performs preprocessing, requirement-evidence pairing, threshold-based classification, and cluster aggregation.
+```text
+ResumeMatch/
++-- app/               # FastAPI backend & analysis engine
+¦   +-- analysis/      # Matching, scoring, & logic
+¦   +-- api/           # Endpoints
+¦   +-- config/        # Thresholds & taxonomy
+¦   +-- models/        # Schemas
++-- frontend/          # Next.js dashboard
++-- tests/             # Engine & API tests
+```
 
-### Frontend
-- **Framework**: Next.js (TypeScript, Tailwind CSS)
-- **Role**: Provides a clean, API-driven dashboard to visualize analysis results.
+## Matching Model
 
-## Matching & Evidence Model
+We use cosine similarity to identify potential evidence for requirements.
 
-ResumeMatch uses cosine similarity to identify potential evidence for each job requirement.
-- **Evidence Threshold (0.35)**: Filters out resume text that is not semantically related to the requirement.
-- **Strong Threshold (0.60)**: Indicates the evidence clearly satisfies the requirement.
-- **Partial Threshold (0.30)**: Indicates the evidence shows relevant experience but falls short of a full match.
+| Threshold | Value | Purpose |
+|---|---:|---|
+| **Evidence** | 0.35 | Filters insufficient semantic evidence |
+| **Partial** | 0.30 | Relevant but incomplete evidence |
+| **Strong** | 0.60 | Evidence clearly satisfies requirement |
+
+*Note: Thresholds were empirically calibrated against benchmark v1.0.0 and are not claimed to be universally optimal.*
 
 ## Evaluation
 
-The engine is calibrated against a 35-case benchmark dataset (v1.0.0).
-- **Accuracy**: 82.86%
-- **Macro F1**: 0.777
+| Metric | Baseline | Calibrated |
+|---|---:|---:|
+| Accuracy | 71.43% | **82.86%** |
+| Macro F1 | 0.666 | **0.777** |
+| False Strong | — | **0** |
 
-## Running Locally
+## Local Development
 
 ### Backend
 ```bash
@@ -55,33 +98,33 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
 ### Frontend
-Navigate to `frontend/`, create `.env.local` with `NEXT_PUBLIC_API_URL` pointing to your backend, then:
+Navigate to `frontend/`, copy `.env.example` to `.env.local` (configure `NEXT_PUBLIC_API_URL`), then:
 ```bash
 npm install
-npm run build
 npm run dev
 ```
+
+## API
+- `GET /health`
+- `POST /api/analyze`
 
 ## Testing
 ```bash
 pytest
+npm run build
 ```
 
 ## Limitations
-- Performance with highly specialized technical relationships depends on the `MiniLM` model\'s training data.
-- Relies on structured text; does not currently perform PDF or DOCX parsing.
-- Threshold calibration is based on a focused 35-case benchmark.
+- Performance with specialized technical relationships depends on the `MiniLM` model training data.
+- Relies on structured text inputs (no PDF/DOCX parsing).
+- Calibration is based on a focused 35-case benchmark.
 
-## Project Structure
-```text
-app/                 # FastAPI backend & analysis engine
-frontend/            # Next.js dashboard
-tests/               # Engine and API tests
-```
+## Roadmap — Not Implemented
+- PDF/DOCX resume parsing
+- Analysis history / user accounts
+- Downloadable PDF reports
+- Broader industry-specific taxonomies
 
-## Roadmap (NOT IMPLEMENTED)
-- PDF/DOCX resume parsing.
-- Analysis history / user accounts.
-- Downloadable PDF reports.
-- Broader industry-specific taxonomies.
+---
 
+Built with: **Python** · **FastAPI** · **Sentence Transformers** · **Next.js** · **TypeScript** · **Tailwind CSS**
