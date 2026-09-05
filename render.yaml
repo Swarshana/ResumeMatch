@@ -1,0 +1,19 @@
+# Resume-to-Job-Match Analyzer — backend
+# Deploy on Render. Set health check path to /health.
+
+services:
+  - type: web
+    name: resume-to-job-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: RTJ_EMBEDDING_MODEL
+        value: sentence-transformers/all-MiniLM-L6-v2
+      - key: RTJ_STRONG_THRESHOLD
+        value: "0.65"
+      - key: RTJ_PARTIAL_THRESHOLD
+        value: "0.40"
+      - key: RTJ_CORS_ORIGINS
+        value: "*"

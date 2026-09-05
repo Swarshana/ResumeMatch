@@ -1,0 +1,621 @@
+{
+  "benchmark_version": "1.0.0",
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "thresholds": {
+    "strong": 0.6,
+    "partial": 0.3,
+    "evidence": 0.35
+  },
+  "results": [
+    {
+      "id": "case_01",
+      "category": "direct_strong",
+      "expected_label": "strong",
+      "predicted_label": "strong",
+      "similarity": 0.7029293775558472,
+      "evidence_sufficient": true,
+      "best_evidence": "Developed backend applications in Python for financial reporting.",
+      "primary_cluster": "backend",
+      "assigned_clusters": [
+        "backend",
+        "frontend",
+        "programming"
+      ],
+      "expected_clusters": [
+        "backend",
+        "programming"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_02",
+      "category": "direct_strong",
+      "expected_label": "strong",
+      "predicted_label": "strong",
+      "similarity": 0.7640393972396851,
+      "evidence_sufficient": true,
+      "best_evidence": "Managed PostgreSQL databases including index tuning and query optimization.",
+      "primary_cluster": "databases",
+      "assigned_clusters": [
+        "databases"
+      ],
+      "expected_clusters": [
+        "databases"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_03",
+      "category": "direct_strong",
+      "expected_label": "strong",
+      "predicted_label": "strong",
+      "similarity": 0.9243689179420471,
+      "evidence_sufficient": true,
+      "best_evidence": "Built dynamic single-page web applications using React and Redux.",
+      "primary_cluster": "frontend",
+      "assigned_clusters": [
+        "frontend"
+      ],
+      "expected_clusters": [
+        "frontend"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_04",
+      "category": "direct_strong",
+      "expected_label": "strong",
+      "predicted_label": "strong",
+      "similarity": 0.6963452696800232,
+      "evidence_sufficient": true,
+      "best_evidence": "Designed and implemented REST APIs serving millions of mobile clients.",
+      "primary_cluster": "backend",
+      "assigned_clusters": [
+        "backend"
+      ],
+      "expected_clusters": [
+        "backend"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_05",
+      "category": "direct_strong",
+      "expected_label": "strong",
+      "predicted_label": "strong",
+      "similarity": 0.8445230722427368,
+      "evidence_sufficient": true,
+      "best_evidence": "Containerized microservices using Docker for multi-environment deployments.",
+      "primary_cluster": "cloud_devops",
+      "assigned_clusters": [
+        "cloud_devops"
+      ],
+      "expected_clusters": [
+        "cloud_devops"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_06",
+      "category": "semantic_paraphrase",
+      "expected_label": "strong",
+      "predicted_label": "strong",
+      "similarity": 0.6294615864753723,
+      "evidence_sufficient": true,
+      "best_evidence": "Built server-side APIs in Python using modern asynchronous frameworks.",
+      "primary_cluster": "backend",
+      "assigned_clusters": [
+        "backend"
+      ],
+      "expected_clusters": [
+        "backend",
+        "programming"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_07",
+      "category": "semantic_paraphrase",
+      "expected_label": "strong",
+      "predicted_label": "partial",
+      "similarity": 0.4816911816596985,
+      "evidence_sufficient": true,
+      "best_evidence": "Conducted rigorous statistical analysis on customer data to uncover purchasing patterns.",
+      "primary_cluster": "data_science",
+      "assigned_clusters": [
+        "data_science"
+      ],
+      "expected_clusters": [
+        "data_science"
+      ],
+      "match": false
+    },
+    {
+      "id": "case_08",
+      "category": "semantic_paraphrase",
+      "expected_label": "strong",
+      "predicted_label": "partial",
+      "similarity": 0.504044771194458,
+      "evidence_sufficient": true,
+      "best_evidence": "Configured continuous integration and continuous delivery workflows using GitHub Actions.",
+      "primary_cluster": "cloud_devops",
+      "assigned_clusters": [
+        "cloud_devops"
+      ],
+      "expected_clusters": [
+        "cloud_devops"
+      ],
+      "match": false
+    },
+    {
+      "id": "case_09",
+      "category": "semantic_paraphrase",
+      "expected_label": "strong",
+      "predicted_label": "strong",
+      "similarity": 0.6664196252822876,
+      "evidence_sufficient": true,
+      "best_evidence": "Designed high-throughput distributed caching and storage clusters with sub-10ms response times.",
+      "primary_cluster": "system_design",
+      "assigned_clusters": [
+        "system_design"
+      ],
+      "expected_clusters": [
+        "system_design"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_10",
+      "category": "related_partial",
+      "expected_label": "partial",
+      "predicted_label": "partial",
+      "similarity": 0.3957533836364746,
+      "evidence_sufficient": true,
+      "best_evidence": "Packaged and ran containerized backend microservices using Docker.",
+      "primary_cluster": "cloud_devops",
+      "assigned_clusters": [
+        "cloud_devops"
+      ],
+      "expected_clusters": [
+        "cloud_devops"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_11",
+      "category": "related_partial",
+      "expected_label": "partial",
+      "predicted_label": "partial",
+      "similarity": 0.44293516874313354,
+      "evidence_sufficient": true,
+      "best_evidence": "Deployed enterprise web applications on Microsoft Azure using App Services and ARM templates.",
+      "primary_cluster": "cloud_devops",
+      "assigned_clusters": [
+        "cloud_devops"
+      ],
+      "expected_clusters": [
+        "cloud_devops"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_12",
+      "category": "related_partial",
+      "expected_label": "partial",
+      "predicted_label": "weak",
+      "similarity": 0.2300674170255661,
+      "evidence_sufficient": false,
+      "best_evidence": "Built linear regression and decision tree models using Scikit-Learn.",
+      "primary_cluster": "machine_learning",
+      "assigned_clusters": [
+        "machine_learning"
+      ],
+      "expected_clusters": [
+        "machine_learning"
+      ],
+      "match": false
+    },
+    {
+      "id": "case_13",
+      "category": "related_partial",
+      "expected_label": "partial",
+      "predicted_label": "weak",
+      "similarity": 0.31992867588996887,
+      "evidence_sufficient": false,
+      "best_evidence": "Developed interactive web pages using vanilla JavaScript and DOM manipulation.",
+      "primary_cluster": "frontend",
+      "assigned_clusters": [
+        "frontend"
+      ],
+      "expected_clusters": [
+        "frontend"
+      ],
+      "match": false
+    },
+    {
+      "id": "case_14",
+      "category": "related_partial",
+      "expected_label": "partial",
+      "predicted_label": "weak",
+      "similarity": 0.3359537422657013,
+      "evidence_sufficient": false,
+      "best_evidence": "Stored and queried semi-structured document collections using MongoDB.",
+      "primary_cluster": "databases",
+      "assigned_clusters": [
+        "databases"
+      ],
+      "expected_clusters": [
+        "databases"
+      ],
+      "match": false
+    },
+    {
+      "id": "case_15",
+      "category": "unrelated_weak",
+      "expected_label": "weak",
+      "predicted_label": "weak",
+      "similarity": 0.03969665989279747,
+      "evidence_sufficient": false,
+      "best_evidence": "Designed responsive website UI layouts and marketing graphics in Figma.",
+      "primary_cluster": "cloud_devops",
+      "assigned_clusters": [
+        "cloud_devops"
+      ],
+      "expected_clusters": [
+        "cloud_devops"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_16",
+      "category": "unrelated_weak",
+      "expected_label": "weak",
+      "predicted_label": "weak",
+      "similarity": 0.11257411539554596,
+      "evidence_sufficient": false,
+      "best_evidence": "Wrote marketing copy and customer newsletter articles for product launches.",
+      "primary_cluster": "databases",
+      "assigned_clusters": [
+        "databases"
+      ],
+      "expected_clusters": [
+        "databases"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_17",
+      "category": "unrelated_weak",
+      "expected_label": "weak",
+      "predicted_label": "weak",
+      "similarity": 0.0195314921438694,
+      "evidence_sufficient": false,
+      "best_evidence": "Organized annual technology conferences and coordinated logistics for 500 attendees.",
+      "primary_cluster": "ai_nlp",
+      "assigned_clusters": [
+        "ai_nlp"
+      ],
+      "expected_clusters": [
+        "ai_nlp",
+        "machine_learning"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_18",
+      "category": "unrelated_weak",
+      "expected_label": "weak",
+      "predicted_label": "weak",
+      "similarity": 0.11610626429319382,
+      "evidence_sufficient": false,
+      "best_evidence": "Edited video podcasts and produced audio content for social media.",
+      "primary_cluster": "cloud_devops",
+      "assigned_clusters": [
+        "cloud_devops"
+      ],
+      "expected_clusters": [
+        "cloud_devops"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_19",
+      "category": "missing_evidence",
+      "expected_label": "weak",
+      "predicted_label": "weak",
+      "similarity": 0.10425876080989838,
+      "evidence_sufficient": false,
+      "best_evidence": "Maintained clean office workspace and managed daily mail deliveries.",
+      "primary_cluster": "testing",
+      "assigned_clusters": [
+        "testing"
+      ],
+      "expected_clusters": [
+        "testing"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_20",
+      "category": "missing_evidence",
+      "expected_label": "weak",
+      "predicted_label": "weak",
+      "similarity": 0.1304766833782196,
+      "evidence_sufficient": false,
+      "best_evidence": "Conducted sales calls and updated CRM customer records.",
+      "primary_cluster": "programming",
+      "assigned_clusters": [
+        "programming",
+        "system_design"
+      ],
+      "expected_clusters": [
+        "programming"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_21",
+      "category": "missing_evidence",
+      "expected_label": "weak",
+      "predicted_label": "weak",
+      "similarity": -0.03772103786468506,
+      "evidence_sufficient": false,
+      "best_evidence": "Prepared quarterly balance sheets and reconciled accounting ledgers.",
+      "primary_cluster": "ai_nlp",
+      "assigned_clusters": [
+        "ai_nlp"
+      ],
+      "expected_clusters": [
+        "ai_nlp"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_22",
+      "category": "mixed_compound",
+      "expected_label": "strong",
+      "predicted_label": "strong",
+      "similarity": 0.8433898687362671,
+      "evidence_sufficient": true,
+      "best_evidence": "Built Python REST APIs using FastAPI and deployed services on Kubernetes clusters.",
+      "primary_cluster": "cloud_devops",
+      "assigned_clusters": [
+        "cloud_devops"
+      ],
+      "expected_clusters": [
+        "backend",
+        "cloud_devops",
+        "programming"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_23",
+      "category": "mixed_compound",
+      "expected_label": "partial",
+      "predicted_label": "partial",
+      "similarity": 0.484402596950531,
+      "evidence_sufficient": true,
+      "best_evidence": "Created Python REST APIs with Django for internal customer administration.",
+      "primary_cluster": "cloud_devops",
+      "assigned_clusters": [
+        "cloud_devops"
+      ],
+      "expected_clusters": [
+        "backend",
+        "cloud_devops",
+        "programming"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_24",
+      "category": "mixed_compound",
+      "expected_label": "partial",
+      "predicted_label": "partial",
+      "similarity": 0.5888960957527161,
+      "evidence_sufficient": true,
+      "best_evidence": "Administered multi-region Kubernetes clusters and container workloads in AWS.",
+      "primary_cluster": "cloud_devops",
+      "assigned_clusters": [
+        "cloud_devops"
+      ],
+      "expected_clusters": [
+        "backend",
+        "cloud_devops",
+        "programming"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_25",
+      "category": "mixed_compound",
+      "expected_label": "weak",
+      "predicted_label": "weak",
+      "similarity": 0.0855993926525116,
+      "evidence_sufficient": false,
+      "best_evidence": "Managed social media marketing campaigns and created email newsletters.",
+      "primary_cluster": "cloud_devops",
+      "assigned_clusters": [
+        "cloud_devops"
+      ],
+      "expected_clusters": [
+        "backend",
+        "cloud_devops",
+        "programming"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_26",
+      "category": "importance_variation",
+      "expected_label": "strong",
+      "predicted_label": "strong",
+      "similarity": 0.6418601870536804,
+      "evidence_sufficient": true,
+      "best_evidence": "Developed software using Python for over 4 years across backend services.",
+      "primary_cluster": "programming",
+      "assigned_clusters": [
+        "programming"
+      ],
+      "expected_clusters": [
+        "programming"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_27",
+      "category": "importance_variation",
+      "expected_label": "strong",
+      "predicted_label": "strong",
+      "similarity": 0.6776551008224487,
+      "evidence_sufficient": true,
+      "best_evidence": "Designed and implemented GraphQL schemas and resolvers in Apollo Server.",
+      "primary_cluster": "backend",
+      "assigned_clusters": [
+        "backend"
+      ],
+      "expected_clusters": [
+        "backend"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_28",
+      "category": "importance_variation",
+      "expected_label": "strong",
+      "predicted_label": "strong",
+      "similarity": 0.6016055345535278,
+      "evidence_sufficient": true,
+      "best_evidence": "Created Dockerfiles and managed local development containers.",
+      "primary_cluster": "cloud_devops",
+      "assigned_clusters": [
+        "cloud_devops"
+      ],
+      "expected_clusters": [
+        "cloud_devops"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_29",
+      "category": "cluster_boundary",
+      "expected_label": "strong",
+      "predicted_label": "strong",
+      "similarity": 0.6904779672622681,
+      "evidence_sufficient": true,
+      "best_evidence": "Applied object-oriented principles, design patterns, and clean code conventions in daily development.",
+      "primary_cluster": "programming",
+      "assigned_clusters": [
+        "programming"
+      ],
+      "expected_clusters": [
+        "programming"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_30",
+      "category": "cluster_boundary",
+      "expected_label": "strong",
+      "predicted_label": "strong",
+      "similarity": 0.8318655490875244,
+      "evidence_sufficient": true,
+      "best_evidence": "Authored Terraform infrastructure-as-code modules and configured automated CI/CD runners.",
+      "primary_cluster": "cloud_devops",
+      "assigned_clusters": [
+        "cloud_devops"
+      ],
+      "expected_clusters": [
+        "cloud_devops"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_31",
+      "category": "cluster_boundary",
+      "expected_label": "strong",
+      "predicted_label": "strong",
+      "similarity": 0.6755679845809937,
+      "evidence_sufficient": true,
+      "best_evidence": "Executed A/B test analysis, two-tailed hypothesis tests, and exploratory analysis on user cohorts.",
+      "primary_cluster": "data_science",
+      "assigned_clusters": [
+        "data_science"
+      ],
+      "expected_clusters": [
+        "data_science"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_32",
+      "category": "cluster_boundary",
+      "expected_label": "strong",
+      "predicted_label": "strong",
+      "similarity": 0.7329604625701904,
+      "evidence_sufficient": true,
+      "best_evidence": "Trained sequence-to-sequence translation and dense text embedding models using PyTorch.",
+      "primary_cluster": "ai_nlp",
+      "assigned_clusters": [
+        "ai_nlp"
+      ],
+      "expected_clusters": [
+        "ai_nlp",
+        "machine_learning"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_33",
+      "category": "cluster_boundary",
+      "expected_label": "strong",
+      "predicted_label": "strong",
+      "similarity": 0.7827943563461304,
+      "evidence_sufficient": true,
+      "best_evidence": "Coded accessible HTML5 interfaces and responsive layouts with modern CSS Flexbox and Grid.",
+      "primary_cluster": "frontend",
+      "assigned_clusters": [
+        "frontend"
+      ],
+      "expected_clusters": [
+        "frontend"
+      ],
+      "match": true
+    },
+    {
+      "id": "case_34",
+      "category": "cluster_boundary",
+      "expected_label": "strong",
+      "predicted_label": "partial",
+      "similarity": 0.5945741534233093,
+      "evidence_sufficient": true,
+      "best_evidence": "Architected distributed multi-node system utilizing consistent hashing and automated failover.",
+      "primary_cluster": "system_design",
+      "assigned_clusters": [
+        "system_design"
+      ],
+      "expected_clusters": [
+        "system_design"
+      ],
+      "match": false
+    },
+    {
+      "id": "case_35",
+      "category": "cluster_boundary",
+      "expected_label": "strong",
+      "predicted_label": "strong",
+      "similarity": 0.8896108269691467,
+      "evidence_sufficient": true,
+      "best_evidence": "Designed relational schemas and tuned B-tree indexes to handle 10k transactions per second.",
+      "primary_cluster": "databases",
+      "assigned_clusters": [
+        "databases"
+      ],
+      "expected_clusters": [
+        "databases"
+      ],
+      "match": true
+    }
+  ]
+}

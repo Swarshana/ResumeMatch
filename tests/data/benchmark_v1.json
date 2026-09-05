@@ -1,0 +1,456 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "total_cases": 35,
+    "purpose": "Deterministic evaluation benchmark for requirement-to-evidence matching, importance tagging, and skill cluster assignment.",
+    "label_distribution": {
+      "strong": 20,
+      "partial": 7,
+      "weak": 8
+    },
+    "category_distribution": {
+      "cluster_boundary": 7,
+      "direct_strong": 5,
+      "importance_variation": 3,
+      "missing_evidence": 3,
+      "mixed_compound": 4,
+      "related_partial": 5,
+      "semantic_paraphrase": 4,
+      "unrelated_weak": 4
+    }
+  },
+  "cases": [
+    {
+      "id": "case_01",
+      "category": "direct_strong",
+      "requirement": "Experience developing backend applications in Python.",
+      "evidence": "Developed backend applications in Python for financial reporting.",
+      "expected_label": "strong",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "backend",
+        "programming"
+      ],
+      "rationale": "Resume evidence directly demonstrates python backend development."
+    },
+    {
+      "id": "case_02",
+      "category": "direct_strong",
+      "requirement": "Proficient with PostgreSQL database administration and query optimization.",
+      "evidence": "Managed PostgreSQL databases including index tuning and query optimization.",
+      "expected_label": "strong",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "databases"
+      ],
+      "rationale": "Direct match on PostgreSQL administration and query tuning."
+    },
+    {
+      "id": "case_03",
+      "category": "direct_strong",
+      "requirement": "Build dynamic single-page web applications using React.",
+      "evidence": "Built dynamic single-page web applications using React and Redux.",
+      "expected_label": "strong",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "frontend"
+      ],
+      "rationale": "Direct demonstration of React single-page application development."
+    },
+    {
+      "id": "case_04",
+      "category": "direct_strong",
+      "requirement": "Design and implement REST APIs for client applications.",
+      "evidence": "Designed and implemented REST APIs serving millions of mobile clients.",
+      "expected_label": "strong",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "backend"
+      ],
+      "rationale": "Direct match on REST API design and implementation."
+    },
+    {
+      "id": "case_05",
+      "category": "direct_strong",
+      "requirement": "Containerize microservices using Docker.",
+      "evidence": "Containerized microservices using Docker for multi-environment deployments.",
+      "expected_label": "strong",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "cloud_devops"
+      ],
+      "rationale": "Direct match on microservice containerization with Docker."
+    },
+    {
+      "id": "case_06",
+      "category": "semantic_paraphrase",
+      "requirement": "Develop backend web services using Python.",
+      "evidence": "Built server-side APIs in Python using modern asynchronous frameworks.",
+      "expected_label": "strong",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "backend",
+        "programming"
+      ],
+      "rationale": "Paraphrase: server-side APIs in Python is equivalent to backend web services in Python."
+    },
+    {
+      "id": "case_07",
+      "category": "semantic_paraphrase",
+      "requirement": "Analyze datasets statistically to identify business trends.",
+      "evidence": "Conducted rigorous statistical analysis on customer data to uncover purchasing patterns.",
+      "expected_label": "strong",
+      "expected_importance": "unspecified",
+      "expected_clusters": [
+        "data_science"
+      ],
+      "rationale": "Paraphrase: statistical analysis on customer data corresponds to analyzing datasets statistically."
+    },
+    {
+      "id": "case_08",
+      "category": "semantic_paraphrase",
+      "requirement": "Establish CI/CD deployment pipelines for automated releases.",
+      "evidence": "Configured continuous integration and continuous delivery workflows using GitHub Actions.",
+      "expected_label": "strong",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "cloud_devops"
+      ],
+      "rationale": "Paraphrase: CI/CD deployment pipelines maps directly to continuous integration and delivery workflows."
+    },
+    {
+      "id": "case_09",
+      "category": "semantic_paraphrase",
+      "requirement": "Architect low-latency distributed storage systems.",
+      "evidence": "Designed high-throughput distributed caching and storage clusters with sub-10ms response times.",
+      "expected_label": "strong",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "system_design"
+      ],
+      "rationale": "Paraphrase: high-throughput distributed caching/storage with sub-10ms latency demonstrates low-latency distributed storage."
+    },
+    {
+      "id": "case_10",
+      "category": "related_partial",
+      "requirement": "Experience with production Kubernetes cluster orchestration and management.",
+      "evidence": "Packaged and ran containerized backend microservices using Docker.",
+      "expected_label": "partial",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "cloud_devops"
+      ],
+      "rationale": "Partial: Docker demonstrates containerization understanding, but not Kubernetes cluster orchestration."
+    },
+    {
+      "id": "case_11",
+      "category": "related_partial",
+      "requirement": "Deploy and manage infrastructure on Amazon Web Services (AWS).",
+      "evidence": "Deployed enterprise web applications on Microsoft Azure using App Services and ARM templates.",
+      "expected_label": "partial",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "cloud_devops"
+      ],
+      "rationale": "Partial: Azure demonstrates cloud infrastructure management, but not the requested AWS cloud platform."
+    },
+    {
+      "id": "case_12",
+      "category": "related_partial",
+      "requirement": "Train and deploy deep learning neural network models in production.",
+      "evidence": "Built linear regression and decision tree models using Scikit-Learn.",
+      "expected_label": "partial",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "machine_learning"
+      ],
+      "rationale": "Partial: Classical ML algorithms demonstrate predictive modeling knowledge, but not deep neural network training."
+    },
+    {
+      "id": "case_13",
+      "category": "related_partial",
+      "requirement": "Build responsive front-end user interfaces using React.",
+      "evidence": "Developed interactive web pages using vanilla JavaScript and DOM manipulation.",
+      "expected_label": "partial",
+      "expected_importance": "preferred",
+      "expected_clusters": [
+        "frontend"
+      ],
+      "rationale": "Partial: JavaScript demonstrates core web fundamentals, but does not prove React framework proficiency."
+    },
+    {
+      "id": "case_14",
+      "category": "related_partial",
+      "requirement": "Write complex relational SQL queries and database migrations.",
+      "evidence": "Stored and queried semi-structured document collections using MongoDB.",
+      "expected_label": "partial",
+      "expected_importance": "unspecified",
+      "expected_clusters": [
+        "databases"
+      ],
+      "rationale": "Partial: NoSQL document storage demonstrates database awareness, but does not demonstrate relational SQL and schema migrations."
+    },
+    {
+      "id": "case_15",
+      "category": "unrelated_weak",
+      "requirement": "Experience managing Kubernetes clusters in production environments.",
+      "evidence": "Designed responsive website UI layouts and marketing graphics in Figma.",
+      "expected_label": "weak",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "cloud_devops"
+      ],
+      "rationale": "Weak: UI graphic design provides no meaningful support for Kubernetes cluster management."
+    },
+    {
+      "id": "case_16",
+      "category": "unrelated_weak",
+      "requirement": "Administer and optimize PostgreSQL relational database instances.",
+      "evidence": "Wrote marketing copy and customer newsletter articles for product launches.",
+      "expected_label": "weak",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "databases"
+      ],
+      "rationale": "Weak: Copywriting is completely unrelated to relational database administration."
+    },
+    {
+      "id": "case_17",
+      "category": "unrelated_weak",
+      "requirement": "Train transformer-based NLP models for text classification.",
+      "evidence": "Organized annual technology conferences and coordinated logistics for 500 attendees.",
+      "expected_label": "weak",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "ai_nlp",
+        "machine_learning"
+      ],
+      "rationale": "Weak: Event logistics provides no support for training NLP transformer models."
+    },
+    {
+      "id": "case_18",
+      "category": "unrelated_weak",
+      "requirement": "Manage cloud networking, VPC peering, and security groups in AWS.",
+      "evidence": "Edited video podcasts and produced audio content for social media.",
+      "expected_label": "weak",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "cloud_devops"
+      ],
+      "rationale": "Weak: Video and audio production is irrelevant to cloud network engineering."
+    },
+    {
+      "id": "case_19",
+      "category": "missing_evidence",
+      "requirement": "Configure automated end-to-end testing suites using Playwright or Cypress.",
+      "evidence": "Maintained clean office workspace and managed daily mail deliveries.",
+      "expected_label": "weak",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "testing"
+      ],
+      "rationale": "Weak: The resume provides no technical evidence supporting automated end-to-end testing."
+    },
+    {
+      "id": "case_20",
+      "category": "missing_evidence",
+      "requirement": "Proficiency in writing high-performance C++ systems software.",
+      "evidence": "Conducted sales calls and updated CRM customer records.",
+      "expected_label": "weak",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "programming"
+      ],
+      "rationale": "Weak: Administrative CRM tracking contains no evidence of C++ systems programming."
+    },
+    {
+      "id": "case_21",
+      "category": "missing_evidence",
+      "requirement": "Fine-tune large language models for domain-specific retrieval tasks.",
+      "evidence": "Prepared quarterly balance sheets and reconciled accounting ledgers.",
+      "expected_label": "weak",
+      "expected_importance": "preferred",
+      "expected_clusters": [
+        "ai_nlp"
+      ],
+      "rationale": "Weak: Accounting spreadsheets provide no evidence of LLM fine-tuning."
+    },
+    {
+      "id": "case_22",
+      "category": "mixed_compound",
+      "requirement": "Build Python REST APIs and deploy containerized services using Kubernetes.",
+      "evidence": "Built Python REST APIs using FastAPI and deployed services on Kubernetes clusters.",
+      "expected_label": "strong",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "backend",
+        "cloud_devops",
+        "programming"
+      ],
+      "rationale": "Strong: The evidence supports both the backend Python API and Kubernetes deployment capabilities."
+    },
+    {
+      "id": "case_23",
+      "category": "mixed_compound",
+      "requirement": "Build Python REST APIs and deploy containerized services using Kubernetes.",
+      "evidence": "Created Python REST APIs with Django for internal customer administration.",
+      "expected_label": "partial",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "backend",
+        "cloud_devops",
+        "programming"
+      ],
+      "rationale": "Partial: The evidence supports the backend Python API portion but lacks the Kubernetes deployment capability."
+    },
+    {
+      "id": "case_24",
+      "category": "mixed_compound",
+      "requirement": "Build Python REST APIs and deploy containerized services using Kubernetes.",
+      "evidence": "Administered multi-region Kubernetes clusters and container workloads in AWS.",
+      "expected_label": "partial",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "backend",
+        "cloud_devops",
+        "programming"
+      ],
+      "rationale": "Partial: The evidence supports the Kubernetes deployment portion but does not demonstrate Python REST API development."
+    },
+    {
+      "id": "case_25",
+      "category": "mixed_compound",
+      "requirement": "Build Python REST APIs and deploy containerized services using Kubernetes.",
+      "evidence": "Managed social media marketing campaigns and created email newsletters.",
+      "expected_label": "weak",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "backend",
+        "cloud_devops",
+        "programming"
+      ],
+      "rationale": "Weak: Marketing evidence supports neither Python backend APIs nor Kubernetes deployment."
+    },
+    {
+      "id": "case_26",
+      "category": "importance_variation",
+      "requirement": "Must have 3+ years of experience with Python programming.",
+      "evidence": "Developed software using Python for over 4 years across backend services.",
+      "expected_label": "strong",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "programming"
+      ],
+      "rationale": "Strong: Directly supports required Python experience requirement."
+    },
+    {
+      "id": "case_27",
+      "category": "importance_variation",
+      "requirement": "Nice to have: experience with GraphQL API endpoints.",
+      "evidence": "Designed and implemented GraphQL schemas and resolvers in Apollo Server.",
+      "expected_label": "strong",
+      "expected_importance": "preferred",
+      "expected_clusters": [
+        "backend"
+      ],
+      "rationale": "Strong: Demonstrates preferred GraphQL capability without changing semantic matching strength."
+    },
+    {
+      "id": "case_28",
+      "category": "importance_variation",
+      "requirement": "Experience with Docker containerization is a plus.",
+      "evidence": "Created Dockerfiles and managed local development containers.",
+      "expected_label": "strong",
+      "expected_importance": "preferred",
+      "expected_clusters": [
+        "cloud_devops"
+      ],
+      "rationale": "Strong: Demonstrates preferred Docker containerization capability."
+    },
+    {
+      "id": "case_29",
+      "category": "cluster_boundary",
+      "requirement": "Write clean, modular code utilizing modern object-oriented programming patterns.",
+      "evidence": "Applied object-oriented principles, design patterns, and clean code conventions in daily development.",
+      "expected_label": "strong",
+      "expected_importance": "unspecified",
+      "expected_clusters": [
+        "programming"
+      ],
+      "rationale": "Boundary (Programming vs Backend): Focuses strictly on core programming language hygiene and code patterns."
+    },
+    {
+      "id": "case_30",
+      "category": "cluster_boundary",
+      "requirement": "Provision infrastructure using Terraform and maintain CI/CD pipelines.",
+      "evidence": "Authored Terraform infrastructure-as-code modules and configured automated CI/CD runners.",
+      "expected_label": "strong",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "cloud_devops"
+      ],
+      "rationale": "Boundary (Backend vs Cloud & DevOps): Focuses on infrastructure provisioning and delivery automation."
+    },
+    {
+      "id": "case_31",
+      "category": "cluster_boundary",
+      "requirement": "Perform statistical hypothesis testing, A/B experiment evaluation, and exploratory data analysis.",
+      "evidence": "Executed A/B test analysis, two-tailed hypothesis tests, and exploratory analysis on user cohorts.",
+      "expected_label": "strong",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "data_science"
+      ],
+      "rationale": "Boundary (Data Science vs Machine Learning): Emphasizes classical statistics and experimentation."
+    },
+    {
+      "id": "case_32",
+      "category": "cluster_boundary",
+      "requirement": "Train neural machine translation and semantic text embedding models.",
+      "evidence": "Trained sequence-to-sequence translation and dense text embedding models using PyTorch.",
+      "expected_label": "strong",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "ai_nlp",
+        "machine_learning"
+      ],
+      "rationale": "Boundary (Machine Learning vs AI/NLP): Centers on natural language processing representations."
+    },
+    {
+      "id": "case_33",
+      "category": "cluster_boundary",
+      "requirement": "Implement responsive web UI components with CSS Flexbox and accessible HTML5 semantics.",
+      "evidence": "Coded accessible HTML5 interfaces and responsive layouts with modern CSS Flexbox and Grid.",
+      "expected_label": "strong",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "frontend"
+      ],
+      "rationale": "Boundary (Frontend vs Programming): Focuses strictly on UI styling and client markup."
+    },
+    {
+      "id": "case_34",
+      "category": "cluster_boundary",
+      "requirement": "Design distributed architecture capable of handling horizontal failover and data partitioning.",
+      "evidence": "Architected distributed multi-node system utilizing consistent hashing and automated failover.",
+      "expected_label": "strong",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "system_design"
+      ],
+      "rationale": "Boundary (System Design vs Backend): Deals with high-level distributed systems architecture."
+    },
+    {
+      "id": "case_35",
+      "category": "cluster_boundary",
+      "requirement": "Design relational database schemas and optimize B-tree indexes for high-volume transactions.",
+      "evidence": "Designed relational schemas and tuned B-tree indexes to handle 10k transactions per second.",
+      "expected_label": "strong",
+      "expected_importance": "required",
+      "expected_clusters": [
+        "databases"
+      ],
+      "rationale": "Boundary (Databases vs Backend): Focuses specifically on schema modeling and database indexing."
+    }
+  ]
+}

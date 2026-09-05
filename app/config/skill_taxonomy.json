@@ -1,0 +1,152 @@
+{
+  "clusters": [
+    {
+      "id": "programming",
+      "name": "Programming",
+      "description": "General-purpose programming languages, core software engineering, data structures, algorithms, debugging, and language fundamentals.",
+      "examples": [
+        "Python",
+        "Java",
+        "C++",
+        "JavaScript",
+        "TypeScript",
+        "Go",
+        "algorithms",
+        "data structures",
+        "object-oriented programming"
+      ]
+    },
+    {
+      "id": "backend",
+      "name": "Backend Development",
+      "description": "Server-side software development including APIs, web services, backend frameworks, application logic, and service architecture.",
+      "examples": [
+        "FastAPI",
+        "Django",
+        "Flask",
+        "Node.js",
+        "REST APIs",
+        "GraphQL",
+        "microservices",
+        "Spring Boot",
+        "server-side logic"
+      ]
+    },
+    {
+      "id": "frontend",
+      "name": "Frontend Development",
+      "description": "User interfaces, web clients, component libraries, browser rendering, and client-side application development.",
+      "examples": [
+        "React",
+        "Next.js",
+        "HTML",
+        "CSS",
+        "Tailwind CSS",
+        "responsive design",
+        "client-side UI",
+        "TypeScript frontend"
+      ]
+    },
+    {
+      "id": "databases",
+      "name": "Databases",
+      "description": "Relational and non-relational data storage, querying, indexing, modeling, schema design, and data persistence.",
+      "examples": [
+        "SQL",
+        "PostgreSQL",
+        "MySQL",
+        "MongoDB",
+        "Redis",
+        "database schema",
+        "query optimization"
+      ]
+    },
+    {
+      "id": "cloud_devops",
+      "name": "Cloud & DevOps",
+      "description": "Cloud platforms, infrastructure, containers, orchestration, CI/CD automation, and operational deployment practices.",
+      "examples": [
+        "AWS",
+        "Azure",
+        "GCP",
+        "Docker",
+        "Kubernetes",
+        "CI/CD pipelines",
+        "Terraform",
+        "infrastructure as code",
+        "cloud deployment"
+      ]
+    },
+    {
+      "id": "data_science",
+      "name": "Data Science",
+      "description": "Statistical analysis, data exploration, experimentation, analytics, and data visualization.",
+      "examples": [
+        "pandas",
+        "NumPy",
+        "statistical modeling",
+        "data exploration",
+        "data visualization",
+        "A/B testing",
+        "exploratory data analysis"
+      ]
+    },
+    {
+      "id": "machine_learning",
+      "name": "Machine Learning",
+      "description": "Supervised and unsupervised learning, predictive models, model training, feature engineering, and model evaluation workflows.",
+      "examples": [
+        "scikit-learn",
+        "predictive modeling",
+        "model training",
+        "supervised learning",
+        "unsupervised learning",
+        "feature engineering",
+        "model evaluation",
+        "XGBoost"
+      ]
+    },
+    {
+      "id": "ai_nlp",
+      "name": "AI / NLP",
+      "description": "Natural language processing, transformers, sentence embeddings, semantic search, language models, and applied AI systems.",
+      "examples": [
+        "NLP",
+        "transformers",
+        "sentence embeddings",
+        "semantic search",
+        "text processing",
+        "Hugging Face",
+        "information retrieval"
+      ]
+    },
+    {
+      "id": "testing",
+      "name": "Testing",
+      "description": "Automated testing, quality assurance, unit testing, integration testing, test design, and verification of software behavior.",
+      "examples": [
+        "unit testing",
+        "pytest",
+        "integration testing",
+        "test coverage",
+        "QA verification",
+        "TDD",
+        "end-to-end testing"
+      ]
+    },
+    {
+      "id": "system_design",
+      "name": "System Design",
+      "description": "Architecture, scalability, reliability, distributed systems, caching, load balancing, and high-level software design.",
+      "examples": [
+        "system design",
+        "scalability",
+        "distributed systems",
+        "caching architecture",
+        "load balancing",
+        "software architecture",
+        "high availability"
+      ]
+    }
+  ]
+}
