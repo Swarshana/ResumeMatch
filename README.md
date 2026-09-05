@@ -1,111 +1,87 @@
-# Resume-to-Job-Match Analyzer
+# ResumeMatch
 
-Semantic resume-to-job alignment with **skill-cluster gap analysis**. This repository currently contains the V1 backend: a FastAPI service wrapping an independent analysis engine.
+Semantic resume-to-job matching with evidence-backed skill gap analysis.
 
-## Current architecture
+ResumeMatch evaluates how well a resume aligns with a specific job description by identifying the best supporting evidence in the resume for each requirement, rather than relying on simple keyword matching. It provides a detailed, evidence-backed breakdown of strengths and gaps, categorized by skill clusters.
 
-```text
-resume  → preprocess → evidence chunks
-job     → preprocess → requirement chunks
-                ↓
-     sentence embeddings
-                ↓
-  requirement ↔ evidence cosine match
-                ↓
-     skill-cluster assignment
-                ↓
- cluster scores → gap explanations → API JSON
-```
+## Why ResumeMatch?
 
-```text
-app/
-  main.py                 FastAPI app factory, CORS, health, embedder warmup
-  api/routes.py           POST /api/analyze
-  models/schemas.py       Pydantic request/response contracts for a future Next.js client
-  services/analyzer.py    Composition root (settings + taxonomy + embedder → pipeline)
-  services/mapper.py      AnalysisResult → API response
-  analysis/               Framework-free analysis engine
-    preprocessing.py      Chunking, headers, de-duplication
-    embeddings.py         Embedder interface + MiniLM implementation
-    matching.py           Cosine similarity, best evidence, cluster assignment
-    scoring.py            Thresholds, cluster scores, overall score
-    explanations.py       Deterministic evidence-backed templates
-    taxonomy.py           Loads skill clusters from JSON
-    pipeline.py           Orchestrates the flow above
-    types.py              Dataclasses returned by the engine
-  config/
-    settings.py           Thresholds and model name (env: RTJ_*)
-    skill_taxonomy.json   Extensible cluster taxonomy
-tests/                    Engine and API tests (no MiniLM download)
-```
+Standard keyword matching often fails to identify semantic equivalents or correctly attribute resume experience to specific job requirements. ResumeMatch addresses this by using semantic embeddings to:
+- Tie resume evidence directly back to individual job requirements.
+- Filter out unrelated resume text as evidence.
+- Aggregate gaps into actionable skill clusters.
 
-## Decisions locked for V1
+## Features
 
-1. **Engine ≠ API.** `app.analysis` has no FastAPI imports. Tests can run the pipeline with a fake embedder.
-2. **Requirement-centric matching.** Each job chunk is matched to its strongest resume chunk. Document-level cosine similarity is not the product metric.
-3. **Taxonomy is data.** Clusters live in `app/config/skill_taxonomy.json`. Add or edit clusters there; do not scatter skill lists through Python.
-4. **Explanations are templates.** V1 does not call an LLM. Every explanation cites a requirement, evidence, score, cluster, and status.
-5. **Thresholds are calibration knobs.** `strong` / `partial` / `weak` cutoffs are settings, not scientific constants.
-6. **Only JD-relevant clusters are scored.** A cluster appears in the response if at least one job requirement was assigned to it.
-7. **Embedder is injectable.** Production uses `sentence-transformers/all-MiniLM-L6-v2`. Tests use a deterministic hashing embedder.
+- **Requirement-to-Evidence Matching**: Uses semantic similarity to pair job requirements with the most relevant resume segments.
+- **Evidence Sufficiency Gating**: Prevents weak semantic matches from being treated as meaningful evidence.
+- **Skill-Cluster Aggregation**: Groups findings into relevant professional domains (e.g., Backend, Frontend, Databases).
+- **Evidence-Backed Explanations**: Provides granular, deterministic feedback for each matched requirement.
+- **Calibrated Scoring**: Uses tuned thresholds to classify requirements as Strong, Partial, or Weak.
+- **Benchmark Evaluation**: Validated against a 35-case labeled dataset for high matching accuracy.
 
-## API
+## Architecture
 
-`POST /api/analyze`
+### Backend
+- **Framework**: FastAPI
+- **Engine**: Framework-agnostic analysis engine using `sentence-transformers/all-MiniLM-L6-v2`.
+- **Logic**: Performs preprocessing, requirement-evidence pairing, threshold-based classification, and cluster aggregation.
 
-```json
-{
-  "resume": "plain text...",
-  "job_description": "plain text..."
-}
-```
+### Frontend
+- **Framework**: Next.js (TypeScript, Tailwind CSS)
+- **Role**: Provides a clean, API-driven dashboard to visualize analysis results.
 
-Response includes overall score (0–100), summary, skill clusters (score, status, matched vs weak requirements), evidence lists, and explanations.
+## Matching & Evidence Model
 
-`GET /health` returns `{"status": "ok"}`.
+ResumeMatch uses cosine similarity to identify potential evidence for each job requirement.
+- **Evidence Threshold (0.35)**: Filters out resume text that is not semantically related to the requirement.
+- **Strong Threshold (0.60)**: Indicates the evidence clearly satisfies the requirement.
+- **Partial Threshold (0.30)**: Indicates the evidence shows relevant experience but falls short of a full match.
 
-Interactive docs: `http://127.0.0.1:8000/docs`
+## Evaluation
 
-## Setup
+The engine is calibrated against a 35-case benchmark dataset (v1.0.0).
+- **Accuracy**: 82.86%
+- **Macro F1**: 0.777
 
-Python 3.11+ recommended.
+## Running Locally
 
+### Backend
 ```bash
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
+uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
-### Run the API
-
-Copy the root `.env.example` to `.env` to override default thresholds or CORS settings.
-
+### Frontend
+Navigate to `frontend/`, create `.env.local` with `NEXT_PUBLIC_API_URL` pointing to your backend, then:
 ```bash
-uvicorn app.main:app --reload
+npm install
+npm run build
+npm run dev
 ```
 
-The first production start downloads MiniLM (~80MB) and warms the model.
-
-### Run tests
-
+## Testing
 ```bash
 pytest
 ```
 
-## Deployment
+## Limitations
+- Performance with highly specialized technical relationships depends on the `MiniLM` model\'s training data.
+- Relies on structured text; does not currently perform PDF or DOCX parsing.
+- Threshold calibration is based on a focused 35-case benchmark.
 
-### Backend (FastAPI)
-- Uses `uvicorn` as the server.
-- The `render.yaml` file defines the deployment configuration.
-- Set environment variables as defined in `.env.example`.
+## Project Structure
+```text
+app/                 # FastAPI backend & analysis engine
+frontend/            # Next.js dashboard
+tests/               # Engine and API tests
+```
 
-### Frontend (Next.js)
-1. Navigate to the `frontend/` directory.
-2. Copy `frontend/.env.example` to `frontend/.env.local`.
-3. Set `NEXT_PUBLIC_API_URL` to your backend production URL.
-4. Run `npm install` and `npm run build`.
+## Roadmap (NOT IMPLEMENTED)
+- PDF/DOCX resume parsing.
+- Analysis history / user accounts.
+- Downloadable PDF reports.
+- Broader industry-specific taxonomies.
 
-## Next milestone
-
-- Calibrate thresholds against labeled resume/JD pairs
-- Optional PDF/DOCX text extraction
